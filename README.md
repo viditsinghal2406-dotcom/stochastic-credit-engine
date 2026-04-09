@@ -153,18 +153,4 @@ Supports:
 
 ---
 
-## Series Context
-
-This is **Project 2b** from **Series 2: Personal Finance Intelligence**
-
-| Project | Name |
-|---------|------|
-| 2a | Cashflow Stability |
-| **2b** | **Credit Default Risk (STPA)** ← |
-| 2c | Financial Stress Warning |
-| 2d | Financial Health Composite |
-| 2e | Behavioral Nudging |
-
----
-
 *Built with NumPy, SciPy, FastAPI, Flask, Plotly, SQLite*
