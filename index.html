@@ -337,14 +337,14 @@ footer{background:var(--surface);border-top:1px solid var(--border2);padding:40p
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-eyebrow"><span></span>Series 2b Â· College Project Â· STPA Engine</div>
+  <div class="hero-eyebrow"><span></span>College Project · STPA Engine</div>
   <h1 class="hero-title">Credit Risk Intelligence<br/>by NovaCred Bank</h1>
   <p class="hero-sub">Answer a few questions or upload a document. Our stochastic engine runs 10,000 simulated financial paths to assess your credit risk and find the perfect card for you.</p>
   <div class="feature-pills">
     <div class="pill">ðµ Markov Chain FSM</div>
     <div class="pill">ð¢ OU Diffusion Process</div>
     <div class="pill">â¡ Jump Shock Modeling</div>
-    <div class="pill">ð² Monte Carlo Â· 10k Paths</div>
+    <div class="pill">ð² Monte Carlo · 10k Paths</div>
     <div class="pill">ð Survival Analysis</div>
     <div class="pill">ð Macro Stress Tests</div>
   </div>
@@ -365,7 +365,7 @@ footer{background:var(--surface);border-top:1px solid var(--border2);padding:40p
 <div class="section">
   <div class="section-label">Step 1 of 5</div>
   <div class="section-title">Credit Card Application</div>
-  <div class="section-sub">Takes about 3 minutes Â· All data is simulated Â· Academic project</div>
+  <div class="section-sub">Takes about 3 minutes · All data is simulated · Academic project</div>
 
   <div class="q-wrapper">
 
@@ -986,8 +986,8 @@ Where N = 10,000 simulations
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-title">NovaCred Bank Â· STPA Engine v2.0</div>
-  <div class="footer-sub">Academic Project - Series 2b Â· Stochastic Processes in Credit Risk</div>
+  <div class="footer-title">NovaCred Bank · STPA Engine v2.0</div>
+  <div class="footer-sub">Academic Project · Stochastic Processes in Credit Risk</div>
   <div class="footer-refs">
     <span class="footer-ref">ð Vasicek (1977) - OU Process in Finance</span>
     <span class="footer-ref">ð Merton (1974) - Structural Credit Model</span>
@@ -998,7 +998,7 @@ Where N = 10,000 simulations
     <span class="footer-badge">Academic Project - Not a real bank</span>
     <span class="footer-badge">All cards are fictional</span>
     <span class="footer-badge">Built with Claude API</span>
-    <span class="footer-badge">STPA Series 2b</span>
+
   </div>
 </footer>
 
@@ -1140,7 +1140,7 @@ async function handleFileUpload(input){
   document.getElementById('uploadZone').innerHTML = `
     <div class="upload-icon">â³</div>
     <div class="upload-title">Analysing document...</div>
-    <div class="upload-sub">${file.name} Â· Sending to STPA backend</div>
+    <div class="upload-sub">${file.name} · Sending to STPA backend</div>
   `;
 
   try {
@@ -1160,7 +1160,7 @@ async function handleFileUpload(input){
       <div class="upload-icon">â</div>
       <div class="upload-title">Document analysed!</div>
       <div class="upload-sub">
-        Detected ₹${Math.round(inflow).toLocaleString()}/mo income Â· ${bank.months_covered||'?'} months history.
+        Detected ₹${Math.round(inflow).toLocaleString()}/mo income · ${bank.months_covered||'?'} months history.
         Form pre-filled - review below and hit <strong>Run Simulation</strong>.
       </div>
     `;
@@ -1583,7 +1583,7 @@ function gaussianRandom(){
 // ââ NovaCred Cards âââââââââââââââââââââââââââââââââââââ
 const NOVACRED_CARDS = [
   {id:'spark', name:'NovaCred Spark', tier:'Entry', fee:0, minIncome:15000, minScore:580, maxPD:45, maxDebtRatio:0.60, maxSpendRatio:0.95,
-   benefits:'1% cashback on everything Â· Free movie ticket monthly Â· Fuel surcharge waiver Â· Zero annual fee',
+   benefits:'1% cashback on everything · Free movie ticket monthly · Fuel surcharge waiver · Zero annual fee',
    detailedBenefits:[
      '1% cashback on every single transaction, no category limits',
      'One free BookMyShow movie ticket every month',
@@ -1596,7 +1596,7 @@ const NOVACRED_CARDS = [
    limitRange:'₹20K to ₹50K', gradient:'card-bg-starter', tierColor:'#64748b', emoji:'â¡'},
 
   {id:'cashback', name:'NovaCred Cashback Pro', tier:'Daily Rewards', fee:499, minIncome:25000, minScore:650, maxPD:35, maxDebtRatio:0.50, maxSpendRatio:0.85,
-   benefits:'5% on groceries and dining Â· 3% on fuel Â· 2% everywhere Â· Fee waived on ₹1L spend',
+   benefits:'5% on groceries and dining · 3% on fuel · 2% everywhere · Fee waived on ₹1L spend',
    detailedBenefits:[
      '5% cashback every time you grocery shop or dine out',
      '3% cashback on fuel and all transport spends',
@@ -1609,7 +1609,7 @@ const NOVACRED_CARDS = [
    limitRange:'₹50K to ₹1.5L', gradient:'card-bg-everyday', tierColor:'#22c55e', emoji:'ð°'},
 
   {id:'shopmore', name:'NovaCred ShopMore', tier:'Shopping', fee:999, minIncome:35000, minScore:680, maxPD:28, maxDebtRatio:0.45, maxSpendRatio:0.80,
-   benefits:'10x points on online shopping Â· 3-month no-cost EMI on every order Â· Free Amazon Prime quarterly',
+   benefits:'10x points on online shopping · 3-month no-cost EMI on every order · Free Amazon Prime quarterly',
    detailedBenefits:[
      '10x reward points on Flipkart, Amazon, Myntra, Meesho and more',
      'Convert any purchase into 3-month no-cost EMI on the spot',
@@ -1622,7 +1622,7 @@ const NOVACRED_CARDS = [
    limitRange:'₹75K to ₹2.5L', gradient:'card-bg-shopmore', tierColor:'#a855f7', emoji:'ðï¸'},
 
   {id:'jetset', name:'NovaCred JetSet', tier:'Travel', fee:2499, minIncome:60000, minScore:720, maxPD:22, maxDebtRatio:0.38, maxSpendRatio:0.75,
-   benefits:'Unlimited domestic lounge Â· 6x miles on flights Â· ₹1Cr travel insurance Â· Zero forex markup',
+   benefits:'Unlimited domestic lounge · 6x miles on flights · ₹1Cr travel insurance · Zero forex markup',
    detailedBenefits:[
      'Unlimited domestic airport lounge visits across all major Indian airports',
      '4 complimentary international lounge visits every quarter',
@@ -1636,7 +1636,7 @@ const NOVACRED_CARDS = [
    limitRange:'₹2L to ₹5L', gradient:'card-bg-jetset', tierColor:'#3b82f6', emoji:'âï¸'},
 
   {id:'prestige', name:'NovaCred Prestige', tier:'Premium', fee:7999, minIncome:125000, minScore:775, maxPD:15, maxDebtRatio:0.30, maxSpendRatio:0.70,
-   benefits:'Unlimited global lounge Â· ₹1,000 monthly dining credit Â· 24/7 personal concierge Â· Golf at 100+ courses Â· 2 hotel nights free yearly',
+   benefits:'Unlimited global lounge · ₹1,000 monthly dining credit · 24/7 personal concierge · Golf at 100+ courses · 2 hotel nights free yearly',
    detailedBenefits:[
      'Unlimited access to 1,400+ airport lounges worldwide through Priority Pass',
      '₹1,000 monthly credit redeemable at 500+ partner restaurants and spas',
@@ -1650,7 +1650,7 @@ const NOVACRED_CARDS = [
    limitRange:'₹5L to ₹15L', gradient:'card-bg-elite', tierColor:'#f59e0b', emoji:'ð'},
 
   {id:'obsidian', name:'NovaCred Obsidian', tier:'Ultra Premium', fee:24999, minIncome:300000, minScore:825, maxPD:8, maxDebtRatio:0.22, maxSpendRatio:0.65,
-   benefits:'Titanium metal card Â· Dedicated RM Â· ₹25,000 annual lifestyle credit Â· Private jet desk Â· Family lounge for 4',
+   benefits:'Titanium metal card · Dedicated RM · ₹25,000 annual lifestyle credit · Private jet desk · Family lounge for 4',
    detailedBenefits:[
      'Brushed titanium metal card with your name laser-engraved on it',
      'Dedicated personal Relationship Manager, reachable on their direct mobile',
@@ -2114,7 +2114,7 @@ function simulateShock(type){
   const newScore = Math.max(0, Math.min(100, baseScore + s.mag));
   const newPD = Math.max(0, Math.min(100, 28 + (s.mag < 0 ? Math.abs(s.mag)*0.8 : -s.mag*0.5)));
   document.getElementById('shockResult').innerHTML =
-    `<span style="color:${s.mag<0?'var(--red)':'var(--green)'}">${s.mag>0?'+':''}${s.mag} pts</span>  ${s.name}: Health Score ${baseScore} â ${newScore} Â· PD Score changes to ~${newPD.toFixed(0)}/100\n\n${s.desc}`;
+    `<span style="color:${s.mag<0?'var(--red)':'var(--green)'}">${s.mag>0?'+':''}${s.mag} pts</span>  ${s.name}: Health Score ${baseScore} â ${newScore} · PD Score changes to ~${newPD.toFixed(0)}/100\n\n${s.desc}`;
 }
 
 // ââ Confetti ââââââââââââââââââââââââââââââââââââââââââââ
