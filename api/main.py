@@ -59,7 +59,7 @@ stress_engine = StressTester()
 
 # ── Frontend ──────────────────────────────────────────────────────────────────
 
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 def serve_frontend():
     """Serve the NovaCred Bank frontend (index.html)."""
     index_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "index.html")
