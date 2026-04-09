@@ -1521,12 +1521,12 @@ function runStochasticSim(params, nSim=3000, horizon=24){
   },0)/nSim;
 
   // Stress test
-  const stressResults = computeStressTests(health, theta, mu, sigma, horizon);
+  const stressResults = computeStressTests(health, theta, mu, sigma, horizon, riskTier);
 
   return {pdScore, pdProbability, pathStats, survival, markovDist, expectedTTD, stressResults};
 }
 
-function computeStressTests(health, theta, mu, sigma, horizon){
+function computeStressTests(health, theta, mu, sigma, horizon, riskTier){
   const scenarios = [
     {name:'Baseline', desc:'Normal conditions', uDelta:0, irDelta:0, gdp:0.02},
     {name:'Mild Recession', desc:'Slight economic slowdown', uDelta:0.02, irDelta:0.01, gdp:-0.01},
@@ -1536,10 +1536,18 @@ function computeStressTests(health, theta, mu, sigma, horizon){
     {name:'Combined Shock', desc:'Stagflation scenario', uDelta:0.07, irDelta:0.05, gdp:-0.03},
   ];
 
+  // Base jump rates by risk tier (matching main simulation)
+  const jumpRates = {low_risk:0.8, medium_risk:1.5, high_risk:2.5, subprime:4.0};
+  const baseLambdaNeg = jumpRates[riskTier] || 1.5;
+  const baseLambdaPos = 0.4;
+
   return scenarios.map(s=>{
-    const stressFactor = 1 + 2.5*Math.max(s.uDelta,0) + 1.5*Math.max(s.irDelta,0) - Math.min(s.gdp,0);
+    const stressFactor = 1 + 2.5*Math.max(s.uDelta,0) + 1.5*Math.max(s.irDelta,0) - Math.min(s.gdp,0) * 10;
     const stressSigma = sigma * stressFactor;
-    const stressMu = mu * (1 - 0.1 * stressFactor);
+    const stressMu = mu * (1 - 0.1 * (stressFactor - 1));
+    // Amplify negative jump frequency under stress
+    const lambdaNeg = baseLambdaNeg * stressFactor;
+    const lambdaPos = baseLambdaPos / Math.max(stressFactor, 1);
     const nSim = 500;
     const dt = 1/12;
     const threshold = 20;
@@ -1547,9 +1555,18 @@ function computeStressTests(health, theta, mu, sigma, horizon){
     for(let n=0;n<nSim;n++){
       let X = health;
       for(let t=0;t<horizon;t++){
-        X = X + theta*(stressMu-X)*dt + stressSigma*gaussianRandom()*Math.sqrt(dt);
-        X = Math.max(0,Math.min(100,X));
-        if(X<threshold){defaults++;break;}
+        const dW = gaussianRandom() * Math.sqrt(dt);
+        const drift = theta * (stressMu - X) * dt;
+        let newVal = X + drift + stressSigma * dW;
+        // Jump process
+        if(Math.random() < lambdaNeg * dt){
+          newVal += -Math.abs(gaussianRandom() * 10 + 12);
+        }
+        if(Math.random() < lambdaPos * dt){
+          newVal += Math.abs(gaussianRandom() * 5 + 6);
+        }
+        X = Math.max(0, Math.min(100, newVal));
+        if(X < threshold){defaults++; break;}
       }
     }
     return {...s, pdScore: (defaults/nSim)*100};
