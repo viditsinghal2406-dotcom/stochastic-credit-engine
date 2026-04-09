@@ -15,8 +15,9 @@ import pandas as pd
 from dataclasses import dataclass
 from typing import Optional, Dict, Any
 
-from core.markov_engine import MarkovCreditEngine, STATES, STATE_INDEX, DEFAULT_THRESHOLD as MARKOV_THRESHOLD
+from core.markov_engine import MarkovCreditEngine, STATES, STATE_INDEX
 from core.diffusion_engine import DiffusionEngine, OUParams, DEFAULT_THRESHOLD
+MARKOV_THRESHOLD = DEFAULT_THRESHOLD
 from core.jump_engine import JumpEngine, ShockProfile, SHOCK_PROFILES
 
 
